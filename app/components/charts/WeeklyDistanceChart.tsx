@@ -18,8 +18,8 @@ const formatDate = (dateStr: string) =>
 
 const CustomLegend = () => (
   <div className="flex items-center gap-2 mt-2">
-    <div className="w-2 h-2 rounded-full bg-[#7987FF]"></div>
-    <span className="text-[#707070] text-small">Km</span>
+    <div className="w-2 h-2 rounded-full bg-chart-bar-dot"></div>
+    <span className="text-text-light text-small">Km</span>
   </div>
 )
 
@@ -42,7 +42,7 @@ export default function WeeklyDistanceChart({ weeklyDistance }: WeeklyDistanceCh
   return (
     <div>
       <div className="flex items-start justify-between mb-1">
-        <h3 className="text-primary text-xl">{avg} km en moyenne</h3>
+        <h3 className="text-primary text-heading-4">{avg} km en moyenne</h3>
         <PeriodSelector
           label={periodLabel}
           onPrev={() => setPageStart(p => Math.max(0, p - 1))}
@@ -51,14 +51,14 @@ export default function WeeklyDistanceChart({ weeklyDistance }: WeeklyDistanceCh
           canGoNext={pageStart + 4 < weeklyDistance.length}
         />
       </div>
-      <p className="text-text-light text-small mb-4">Total des kilomètres 4 dernières semaines</p>
+      <p className="text-text-light text-body mb-4">Total des kilomètres 4 dernières semaines</p>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={visible} barSize={14} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="2 2" vertical={false} stroke="#F1F1F1" />
-          <XAxis dataKey="week" axisLine={{ stroke: "#717171" }} tickLine={false} tick={{ fill: "#707070", fontSize: 12 }} />
-          <YAxis axisLine={{ stroke: "#717171" }} tickLine={false} tick={{ fill: "#707070", fontSize: 12 }} />
-          <Tooltip />
-          <Bar dataKey="distance" fill="#B6BDFC" radius={[7, 7, 7, 7]} />
+          <CartesianGrid strokeDasharray="2 2" vertical={false} stroke="var(--color-chart-grid)" />
+          <XAxis dataKey="week" axisLine={{ stroke: "var(--color-chart-axis)" }} tickLine={false} tick={{ fill: "var(--color-text-light)", fontSize: 12 }} />
+          <YAxis axisLine={{ stroke: "var(--color-chart-axis)" }} tickLine={false} tick={{ fill: "var(--color-text-light)", fontSize: 12 }} />
+          <Tooltip cursor={{ fill: "transparent" }} />
+          <Bar dataKey="distance" fill="var(--color-chart-bar)" radius={[7, 7, 7, 7]} activeBar={{ fill: "var(--color-primary)" }} />
         </BarChart>
       </ResponsiveContainer>
       <CustomLegend />

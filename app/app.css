@@ -10,14 +10,17 @@
   --color-dark: #000000;
   --color-white: #FFFFFF;
   --color-text-dark: #1A1A1A;
-  --color-text-light: #6B7280;
+  --color-text-light: #707070;
   --color-border: #E5E7EB;
-
   /* Couleurs graphiques */
   --color-chart-bar: #B6BDFC;
+  --color-chart-bar-dot: #7987FF;
   --color-chart-max-bpm: #E74C3C;
-  --color-chart-min-bpm: #F8B4B4;
+  --color-chart-min-bpm: #FCC1B6;
   --color-chart-avg-bpm: #3B82F6;
+  --color-chart-grid: #F1F1F1;
+  --color-chart-axis: #717171;
+  --color-chart-goal-remaining: #E8EAFF;
 
   /* Typographie - tailles */
   --text-heading-1: 3rem;       /* 48px */
@@ -50,5 +53,5 @@ html, body {
   @apply bg-white dark:bg-gray-950;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  color: #1A1A1A;
+  color: var(--color-text-dark);
 }

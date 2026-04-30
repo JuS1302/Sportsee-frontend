@@ -14,7 +14,7 @@ export default function PeriodSelector({ label, onPrev, onNext, canGoPrev, canGo
         disabled={!canGoPrev}
         className="w-7 h-7 rounded-full border border-border flex items-center justify-center disabled:opacity-30 hover:bg-gray-50"
       >
-        <i className="fa-solid fa-chevron-left text-xs text-text-dark" />
+        <i className="fa-solid fa-chevron-left text-small text-text-dark" />
       </button>
       <span className="text-small text-text-light whitespace-nowrap">{label}</span>
       <button
@@ -22,7 +22,7 @@ export default function PeriodSelector({ label, onPrev, onNext, canGoPrev, canGo
         disabled={!canGoNext}
         className="w-7 h-7 rounded-full border border-border flex items-center justify-center disabled:opacity-30 hover:bg-gray-50"
       >
-        <i className="fa-solid fa-chevron-right text-xs text-text-dark" />
+        <i className="fa-solid fa-chevron-right text-small text-text-dark" />
       </button>
     </div>
   )

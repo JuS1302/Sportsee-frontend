@@ -55,11 +55,28 @@ export const userService = {
         distance: Math.round((distance as number) * 10) / 10
       }))
 
+    const latestDate = sorted[0] ? new Date(sorted[0].date) : new Date()
+    const latestWeekKey = `${latestDate.getFullYear()}-W${getISOWeek(latestDate)}`
+    const latestWeekBounds = getWeekBounds(latestWeekKey)
+
+    const currentWeekSessions = activity.filter((s: any) =>
+      s.date >= latestWeekBounds.startDate && s.date <= latestWeekBounds.endDate
+    )
+
+    const weeklyStats = {
+      weekStart: latestWeekBounds.startDate,
+      weekEnd: latestWeekBounds.endDate,
+      sessionCount: currentWeekSessions.length,
+      totalDuration: currentWeekSessions.reduce((sum: number, s: any) => sum + s.duration, 0),
+      totalDistance: Math.round(currentWeekSessions.reduce((sum: number, s: any) => sum + s.distance, 0) * 10) / 10
+    }
+
     return {
       sessions: activity,
       totalCalories,
       restDays,
-      weeklyDistance
+      weeklyDistance,
+      weeklyStats
     }
   }
 }

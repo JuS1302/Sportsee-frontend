@@ -48,12 +48,12 @@ const formatDate = (date: Date) =>
 
 const CustomLegend = () => (
   <div className="flex items-center gap-2 mt-2">
-    <div className="w-2 h-2 rounded-full bg-[#f8b4b4]"></div>
-    <span className="text-[#707070] text-small">Min</span>
-    <div className="w-2 h-2 rounded-full bg-[#e74c3c]"></div>
-    <span className="text-[#707070] text-small">Max</span>
-    <div className="w-2 h-2 rounded-full bg-[#3b82f6]"></div>
-    <span className="text-[#707070] text-small">Avg BPM</span>
+    <div className="w-2 h-2 rounded-full bg-chart-min-bpm"></div>
+    <span className="text-text-light text-small">Min</span>
+    <div className="w-2 h-2 rounded-full bg-chart-max-bpm"></div>
+    <span className="text-text-light text-small">Max</span>
+    <div className="w-2 h-2 rounded-full bg-chart-avg-bpm"></div>
+    <span className="text-text-light text-small">Avg BPM</span>
   </div>
 )
 
@@ -61,7 +61,7 @@ export default function HeartRateChart({ sessions }: HeartRateChartProps) {
   const sessionsByWeek: { [key: string]: Session[] } = {}
   sessions.forEach(session => {
     const date = new Date(session.date)
-    const key = `${date.getFullYear()}-W${getISOWeek(date)}`
+    const key = `${date.getFullYear()}-W${String(getISOWeek(date)).padStart(2, '0')}`
     if (!sessionsByWeek[key]) sessionsByWeek[key] = []
     sessionsByWeek[key].push(session)
   })
@@ -98,7 +98,7 @@ export default function HeartRateChart({ sessions }: HeartRateChartProps) {
   return (
     <div>
       <div className="flex items-start justify-between mb-1">
-        <h3 className="text-red-500 text-xl">{avgBpm} BPM</h3>
+        <h3 className="text-chart-max-bpm text-heading-4">{avgBpm} BPM</h3>
         <PeriodSelector
           label={periodLabel}
           onPrev={() => setWeekIndex(i => i - 1)}
@@ -107,16 +107,16 @@ export default function HeartRateChart({ sessions }: HeartRateChartProps) {
           canGoNext={weekIndex < weekKeys.length - 1}
         />
       </div>
-      <p className="text-gray-400 text-sm mb-4">Fréquence cardiaque moyenne</p>
+      <p className="text-text-light text-body mb-4">Fréquence cardiaque moyenne</p>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={data} barSize={14}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="day" axisLine={false} tickLine={false} />
-          <YAxis axisLine={false} tickLine={false} domain={[130, 190]} />
+          <CartesianGrid strokeDasharray="2 2" vertical={false} stroke="var(--color-chart-grid)" />
+          <XAxis dataKey="day" axisLine={{ stroke: "var(--color-chart-axis)" }} tickLine={false} tick={{ fill: "var(--color-text-light)", fontSize: 12 }} />
+          <YAxis axisLine={{ stroke: "var(--color-chart-axis)" }} tickLine={false} tick={{ fill: "var(--color-text-light)", fontSize: 12 }} domain={[130, 190]} ticks={[130, 145, 160, 187]} />
           <Tooltip />
-          <Bar dataKey="max" name="Max BPM" fill="#e74c3c" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="min" name="Min" fill="#f8b4b4" radius={[4, 4, 0, 0]} />
-          <Line dataKey="average" name="Avg BPM" stroke="#3b82f6" dot={{ fill: "#3b82f6" }} type="monotone" />
+          <Bar dataKey="max" name="Max BPM" fill="var(--color-chart-max-bpm)" radius={[7, 7, 7, 7]} />
+          <Bar dataKey="min" name="Min" fill="var(--color-chart-min-bpm)" radius={[7, 7, 7, 7]} />
+          <Line dataKey="average" name="Avg BPM" stroke="var(--color-chart-avg-bpm)" dot={{ fill: "var(--color-chart-avg-bpm)" }} type="monotone" />
         </ComposedChart>
       </ResponsiveContainer>
       <CustomLegend />
