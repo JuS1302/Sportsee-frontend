@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
-import { api } from "../api/api"
 import { userService } from "../services/userService"
 
 export const useUserData = () => {
@@ -14,7 +13,7 @@ export const useUserData = () => {
     const fetchData = async () => {
       try {
         const [info, activity] = await Promise.all([
-          api.getUserInfo(token || ""),
+          userService.getUserInfo(token || ""),
           userService.getUserActivity(token || "", "2025-01-01", "2025-12-31")
         ])
         setUserInfo(info)

@@ -1,6 +1,6 @@
 import mockData from "../data/mock-data.json"
 
-const USE_MOCK = true
+const USE_MOCK = false
 const API_URL = "http://localhost:8000"
 
 export const api = {
