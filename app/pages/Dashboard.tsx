@@ -22,7 +22,7 @@ export default function Dashboard() {
 
           {/* Carte profil */}
           {userInfo && (
-            <Card className="flex items-center justify-between mb-20">
+            <Card className="flex items-center justify-between mb-20 animate-fade-in">
               <div className="flex items-center gap-8">
                 <img
                   src={userInfo.profile.profilePicture}
@@ -53,19 +53,19 @@ export default function Dashboard() {
           )}
 
           {/* Section Dernières performance */}
-          <h2 className="text-heading-4 mb-6">Vos dernières performances</h2>
+          <h2 className="text-heading-4 mb-6 animate-fade-in-1">Vos dernières performances</h2>
           <div className="grid grid-cols-[9fr_11fr] gap-6">
-            <Card>
+            <Card className="animate-fade-in-2">
               <WeeklyDistanceChart weeklyDistance={userActivity.weeklyDistance} />
             </Card>
-            <Card>
+            <Card className="animate-fade-in-3">
               <HeartRateChart sessions={userActivity.sessions} />
             </Card>
           </div>
 
           {/* Section Cette semaine */}
           {userActivity.weeklyStats && userInfo && (
-            <section className="mt-12">
+            <section className="mt-12 animate-fade-in-4">
               <h2 className="text-heading-4">Cette semaine</h2>
               <p className="text-text-light text-body-large mb-6">
                 Du {new Date(userActivity.weeklyStats.weekStart).toLocaleDateString('fr-FR')} au {new Date(userActivity.weeklyStats.weekEnd).toLocaleDateString('fr-FR')}

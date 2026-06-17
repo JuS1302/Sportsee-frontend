@@ -25,12 +25,12 @@ export default function Login() {
     <div className="flex h-screen bg-background">
 
       {/* Partie gauche */}
-      <div className="w-1/2 flex flex-col">
+      <div className="w-1/2 flex flex-col animate-fade-in">
         <Header>
           <Logo />
         </Header>
-        <div className="flex-1 flex items-center justify-start px-50">
-          <Card className="w-[400px]">
+        <div className="flex-1 flex items-center justify-center px-16">
+          <Card className="w-full max-w-md">
             <h1 className="text-primary text-heading-3 font-semibold leading-tight mb-8">
               Transformez <br /> vos stats en résultats
             </h1>
@@ -63,15 +63,18 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Partie droite */}
-      <div className="relative overflow-hidden">
+      {/* Partie droite - photo plein écran */}
+      <div className="flex-1 relative overflow-hidden">
         <img
           src="/images/running.jpg"
           alt="Coureurs"
           className="w-full h-full object-cover"
         />
-        <div className="absolute bottom-8 right-8 bg-white rounded-4xl p-4 max-w-[300px] shadow text-primary text-small text-center">
-          Analysez vos performances en un clin d'œil, suivez vos progrès et atteignez vos objectifs.
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute bottom-10 left-10 right-10 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+          <p className="text-white text-body-large font-medium">
+            Analysez vos performances en un clin d'œil, suivez vos progrès et atteignez vos objectifs.
+          </p>
         </div>
       </div>
 
