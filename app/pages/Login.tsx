@@ -26,9 +26,12 @@ export default function Login() {
 
       {/* Partie gauche */}
       <div className="w-1/2 flex flex-col animate-fade-in">
-        <Header>
+        <div className="px-16 pt-12">
           <Logo />
-        </Header>
+          <p className="text-text-light text-body-large mt-4">
+            Analysez vos performances, suivez vos progrès et atteignez vos objectifs.
+          </p>
+        </div>
         <div className="flex-1 flex items-center justify-center px-16">
           <Card className="w-full max-w-md">
             <h1 className="text-primary text-heading-3 font-semibold leading-tight mb-8">
@@ -70,12 +73,6 @@ export default function Login() {
           alt="Coureurs"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        <div className="absolute bottom-10 left-10 right-10 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-          <p className="text-white text-body-large font-medium">
-            Analysez vos performances en un clin d'œil, suivez vos progrès et atteignez vos objectifs.
-          </p>
-        </div>
       </div>
 
     </div>
