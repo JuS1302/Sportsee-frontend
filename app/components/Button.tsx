@@ -11,7 +11,8 @@ export default function Button({ label, onClick, type = "button", isLoading }: B
       type={type}
       onClick={onClick}
       disabled={isLoading}
-      className="w-full bg-primary text-white text-body mt-6 py-4 px-10 rounded-button font-regular hover:opacity-90 transition disabled:opacity-50"
+      className="w-full text-white text-body mt-6 py-4 px-10 rounded-button font-medium hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-150 disabled:opacity-50 disabled:scale-100"
+      style={{ background: "linear-gradient(135deg, #0B23F4 0%, #3B5BDB 100%)" }}
     >
       {isLoading ? "Chargement..." : label}
     </button>

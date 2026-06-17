@@ -22,31 +22,34 @@ export default function Dashboard() {
 
           {/* Carte profil */}
           {userInfo && (
-            <Card className="flex items-center justify-between mb-20 animate-fade-in">
-              <div className="flex items-center gap-8">
-                <img
-                  src={userInfo.profile.profilePicture}
-                  alt={`${userInfo.profile.firstName} ${userInfo.profile.lastName}`}
-                  className="w-[104px] h-[117px] rounded-[10px] object-cover"
-                />
+            <Card className="flex items-center justify-between mb-20 animate-fade-in !p-6">
+              <div className="flex items-center gap-6">
+                <div className="relative shrink-0">
+                  <img
+                    src={userInfo.profile.profilePicture}
+                    alt={`${userInfo.profile.firstName} ${userInfo.profile.lastName}`}
+                    className="w-20 h-20 rounded-full object-cover ring-4 ring-primary/10"
+                  />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-400 ring-2 ring-white" />
+                </div>
                 <div>
-                  <p className="text-heading-4">
+                  <p className="text-heading-4 font-semibold">
                     {userInfo.profile.firstName} {userInfo.profile.lastName}
                   </p>
-                  <p className="text-text-light text-body">
+                  <p className="text-text-light text-small mt-0.5">
                     Membre depuis le {new Date(userInfo.profile.createdAt).toLocaleDateString("fr-FR", {
                       day: "numeric", month: "long", year: "numeric"
                     })}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <p className="text-text-light text-body">Distance totale parcourue</p>
+              <div className="flex items-center gap-4">
+                <p className="text-text-light text-small text-right leading-snug">Distance totale<br />parcourue</p>
                 <StatCard
                   label=""
                   value={userInfo.statistics.totalDistance}
                   unit="km"
-                  icon={<i className="fa-solid fa-trophy text-heading-3 text-white" />}
+                  icon={<i className="fa-solid fa-trophy text-body text-white" />}
                 />
               </div>
             </Card>

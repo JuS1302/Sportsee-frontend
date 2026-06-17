@@ -22,7 +22,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen" style={{ background: "linear-gradient(160deg, #ffffff 0%, #F4F6FF 100%)" }}>
 
       {/* Partie gauche */}
       <div className="w-1/2 flex flex-col animate-fade-in">
