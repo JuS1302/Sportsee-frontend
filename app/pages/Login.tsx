@@ -28,8 +28,9 @@ export default function Login() {
       <div className="w-1/2 flex flex-col animate-fade-in">
         <div className="px-16 pt-12">
           <Logo />
-          <p className="text-text-light text-body-large mt-4">
-            Analysez vos performances, suivez vos progrès et atteignez vos objectifs.
+          <p className="text-heading-3 font-semibold mt-6 leading-snug">
+            Courez plus loin.<br />
+            <span className="text-primary">Progressez plus vite.</span>
           </p>
         </div>
         <div className="flex-1 flex items-center justify-center px-16">

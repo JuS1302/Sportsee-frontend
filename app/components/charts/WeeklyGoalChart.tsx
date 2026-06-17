@@ -5,32 +5,20 @@ interface WeeklyGoalChartProps {
   weeklyGoal: number
 }
 
-const RADIAN = Math.PI / 180
-
-const renderLabel = ({ cx, cy, midAngle, outerRadius, name, value, fill }: any) => {
-  const labelRadius = outerRadius + 40
-  const dotRadius = outerRadius + 18
-  const x = cx + labelRadius * Math.cos(-midAngle * RADIAN)
-  const y = cy + labelRadius * Math.sin(-midAngle * RADIAN)
-  const dotX = cx + dotRadius * Math.cos(-midAngle * RADIAN)
-  const dotY = cy + dotRadius * Math.sin(-midAngle * RADIAN)
-
-  return (
-    <g>
-      <circle cx={dotX} cy={dotY} r={4} fill={fill} />
-      <text
-        x={x}
-        y={y}
-        textAnchor={x > cx ? "start" : "end"}
-        dominantBaseline="central"
-        fontSize={12}
-        fill="var(--color-text-light)"
-      >
-        {value} {name}
-      </text>
-    </g>
-  )
-}
+const CustomLegend = ({ done, remaining }: { done: number; remaining: number }) => (
+  <div className="flex items-center gap-6 mt-2">
+    <div className="flex items-center gap-2">
+      <div className="w-2 h-2 rounded-full bg-primary" />
+      <span className="text-text-light text-small">{done} réalisée{done > 1 ? "s" : ""}</span>
+    </div>
+    {remaining > 0 && (
+      <div className="flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-chart-goal-remaining" />
+        <span className="text-text-light text-small">{remaining} restant{remaining > 1 ? "s" : ""}</span>
+      </div>
+    )}
+  </div>
+)
 
 export default function WeeklyGoalChart({ sessionCount, weeklyGoal }: WeeklyGoalChartProps) {
   const done = Math.min(sessionCount, weeklyGoal)
@@ -48,7 +36,7 @@ export default function WeeklyGoalChart({ sessionCount, weeklyGoal }: WeeklyGoal
         <span className="text-chart-bar text-body-large"> sur objectif de {weeklyGoal}</span>
       </h3>
       <p className="text-text-light text-body mb-4">Courses hebdomadaires réalisées</p>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={220}>
         <PieChart>
           <Pie
             data={data}
@@ -61,11 +49,10 @@ export default function WeeklyGoalChart({ sessionCount, weeklyGoal }: WeeklyGoal
             dataKey="value"
             strokeWidth={0}
             paddingAngle={remaining > 0 ? 4 : 0}
-            label={renderLabel}
-            labelLine={false}
           />
         </PieChart>
       </ResponsiveContainer>
+      <CustomLegend done={done} remaining={remaining} />
     </div>
   )
 }
