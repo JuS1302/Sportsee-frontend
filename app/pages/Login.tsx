@@ -52,11 +52,6 @@ export default function Login() {
               {error && (
                 <p className="text-red-500 text-small mb-4">{error}</p>
               )}
-              <Button
-                label="Se connecter"
-                type="submit"
-                isLoading={isLoading}
-              />
             </form>
             <Button
               label="Voir la démo"
