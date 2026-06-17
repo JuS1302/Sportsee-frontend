@@ -36,12 +36,20 @@ export default function WeeklyGoalChart({ sessionCount, weeklyGoal }: WeeklyGoal
   const done = Math.min(sessionCount, weeklyGoal)
   const remaining = Math.max(0, weeklyGoal - sessionCount)
 
-  const data = remaining > 0
-    ? [
-        { name: "réalisées", value: done, fill: "var(--color-primary)" },
-        { name: "restants", value: remaining, fill: "var(--color-chart-goal-remaining)" },
-      ]
-    : [{ name: "réalisées", value: 1, fill: "var(--color-primary)" }]
+  const data = [
+    ...Array.from({ length: done }, (_, i) => ({
+      name: "réalisée",
+      value: 1,
+      fill: "var(--color-primary)",
+      key: `done-${i}`
+    })),
+    ...Array.from({ length: remaining }, (_, i) => ({
+      name: "restant",
+      value: 1,
+      fill: "var(--color-chart-goal-remaining)",
+      key: `remaining-${i}`
+    }))
+  ]
 
   return (
     <div>
@@ -62,6 +70,7 @@ export default function WeeklyGoalChart({ sessionCount, weeklyGoal }: WeeklyGoal
             endAngle={-270}
             dataKey="value"
             strokeWidth={0}
+            paddingAngle={data.length > 1 ? 4 : 0}
             label={renderLabel}
             labelLine={false}
           />
