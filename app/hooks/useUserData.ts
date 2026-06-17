@@ -14,7 +14,7 @@ export const useUserData = () => {
       try {
         const [info, activity] = await Promise.all([
           userService.getUserInfo(token || ""),
-          userService.getUserActivity(token || "", "2025-01-01", "2025-12-31")
+          userService.getUserActivity(token || "", "2024-01-01", new Date().toISOString().split("T")[0])
         ])
         setUserInfo(info)
         setUserActivity(activity)

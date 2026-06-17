@@ -58,20 +58,12 @@ export default function Login() {
                 isLoading={isLoading}
               />
             </form>
-            <p className="text-primary text-small mt-4 cursor-pointer hover:underline text-center">
-              Mot de passe oublié ?
-            </p>
-            <div className="mt-6 pt-6 border-t border-border text-center">
-              <p className="text-text-light text-small mb-3">Vous souhaitez juste explorer ?</p>
-              <button
-                type="button"
-                onClick={handleDemo}
-                disabled={isLoading}
-                className="text-primary text-small font-medium hover:underline disabled:opacity-50"
-              >
-                → Voir la démo
-              </button>
-            </div>
+            <Button
+              label="Voir la démo"
+              type="button"
+              onClick={handleDemo}
+              isLoading={isLoading}
+            />
           </Card>
         </div>
       </div>
