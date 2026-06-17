@@ -1,7 +1,7 @@
 import mockData from "../data/mock-data.json"
 
 const USE_MOCK = false
-const API_URL = "http://localhost:8000"
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 export const api = {
   login: async (username: string, password: string) => {
