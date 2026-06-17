@@ -17,6 +17,10 @@ export default function Login() {
     handleLogin(username, password)
   }
 
+  const handleDemo = () => {
+    handleLogin("julie", "password123")
+  }
+
   return (
     <div className="flex h-screen bg-background">
 
@@ -57,6 +61,17 @@ export default function Login() {
             <p className="text-primary text-small mt-4 cursor-pointer hover:underline text-center">
               Mot de passe oublié ?
             </p>
+            <div className="mt-6 pt-6 border-t border-border text-center">
+              <p className="text-text-light text-small mb-3">Vous souhaitez juste explorer ?</p>
+              <button
+                type="button"
+                onClick={handleDemo}
+                disabled={isLoading}
+                className="text-primary text-small font-medium hover:underline disabled:opacity-50"
+              >
+                → Voir la démo
+              </button>
+            </div>
           </Card>
         </div>
       </div>
