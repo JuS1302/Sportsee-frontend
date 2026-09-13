@@ -22,7 +22,16 @@ export default function Navbar() {
   return (
     <Header>
       <Logo />
-      <div className="flex items-center gap-8 bg-white/90 rounded-full px-8 py-3 shadow-sm backdrop-blur-sm">
+      {/* Navigation mobile */}
+      <div className="flex md:hidden items-center gap-4">
+        <NavLink to="/dashboard" className={linkClass}>Dashboard</NavLink>
+        <NavLink to="/profile" className={linkClass}>Profil</NavLink>
+        <button onClick={handleLogout} className="text-primary text-small hover:underline transition-opacity hover:opacity-70">
+          Déco
+        </button>
+      </div>
+      {/* Navigation desktop — pill style */}
+      <div className="hidden md:flex items-center gap-8 bg-white/90 rounded-full px-8 py-3 shadow-sm backdrop-blur-sm">
         <NavLink to="/dashboard" className={linkClass}>
           Dashboard
         </NavLink>

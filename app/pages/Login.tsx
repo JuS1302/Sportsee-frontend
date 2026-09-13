@@ -25,16 +25,16 @@ export default function Login() {
     <div className="flex h-screen" style={{ background: "linear-gradient(160deg, #ffffff 0%, #F4F6FF 100%)" }}>
 
       {/* Partie gauche */}
-      <div className="w-1/2 flex flex-col animate-fade-in">
-        <div className="px-16 pt-12">
+      <div className="w-full md:w-1/2 flex flex-col animate-fade-in">
+        <div className="px-6 md:px-16 pt-12">
           <Logo />
           <p className="text-heading-3 font-semibold mt-6 leading-snug">
             Courez plus loin.<br />
             <span className="text-primary">Progressez plus vite.</span>
           </p>
         </div>
-        <div className="flex-1 flex items-center justify-center px-16">
-          <Card className="w-full max-w-md">
+        <div className="flex-1 flex items-center justify-center px-6 md:px-16">
+          <Card className="w-full max-w-md mx-auto">
             <h1 className="text-primary text-heading-3 font-semibold leading-tight mb-8">
               Transformez <br /> vos stats en résultats
             </h1>
@@ -67,8 +67,8 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Partie droite - photo plein écran */}
-      <div className="flex-1 relative overflow-hidden">
+      {/* Partie droite - photo plein écran, cachée sur mobile */}
+      <div className="hidden md:flex flex-1 relative overflow-hidden">
         <img
           src="/images/running.jpg"
           alt="Coureurs"

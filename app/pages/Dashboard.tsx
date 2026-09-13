@@ -18,11 +18,11 @@ export default function Dashboard() {
     <ProtectedRoute>
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />
-        <main className="flex-1 px-page py-14">
+        <main className="flex-1 px-4 md:px-12 lg:px-page py-8 lg:py-14">
 
           {/* Carte profil */}
           {userInfo && (
-            <Card className="flex items-center justify-between mb-20 animate-fade-in !p-6">
+            <Card className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 lg:mb-20 gap-4 animate-fade-in !p-6">
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
                   <img
@@ -57,7 +57,7 @@ export default function Dashboard() {
 
           {/* Section Dernières performance */}
           <h2 className="text-heading-4 mb-6 animate-fade-in-1">Vos dernières performances</h2>
-          <div className="grid grid-cols-[9fr_11fr] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr] gap-6">
             <Card className="animate-fade-in-2">
               <WeeklyDistanceChart weeklyDistance={userActivity.weeklyDistance} />
             </Card>
@@ -73,7 +73,7 @@ export default function Dashboard() {
               <p className="text-text-light text-body-large mb-6">
                 Du {new Date(userActivity.weeklyStats.weekStart).toLocaleDateString('fr-FR')} au {new Date(userActivity.weeklyStats.weekEnd).toLocaleDateString('fr-FR')}
               </p>
-              <div className="grid grid-cols-[9fr_11fr] gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr] gap-6">
                 <Card>
                   <WeeklyGoalChart
                     sessionCount={userActivity.weeklyStats.sessionCount}
