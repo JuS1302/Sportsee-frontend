@@ -17,8 +17,8 @@ export default function Profile() {
     <ProtectedRoute>
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />
-        <main className="flex-1 px-page py-14">
-          <div className="grid grid-cols-[9fr_11fr] gap-12">
+        <main className="flex-1 px-4 md:px-12 lg:px-page py-8 lg:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr] gap-6 lg:gap-12">
 
             {/* Colonne gauche */}
             <div className="flex flex-col gap-6">

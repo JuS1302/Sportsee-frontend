@@ -68,7 +68,7 @@ export default function Login() {
       </div>
 
       {/* Partie droite - photo plein écran, cachée sur mobile */}
-      <div className="hidden md:flex flex-1 relative overflow-hidden">
+      <div className="hidden md:block flex-1 relative overflow-hidden">
         <img
           src="/images/running.jpg"
           alt="Coureurs"
