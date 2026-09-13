@@ -3,7 +3,7 @@ import Logo from "./Logo"
 
 export default function Footer() {
   return (
-    <footer className="bg-white px-4 md:px-10 lg:px-header py-navbar flex flex-wrap items-center justify-between gap-2">
+    <footer className="bg-white px-4 md:px-10 lg:px-header py-6 lg:py-navbar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
       <div className="flex items-center gap-4">
         <span className="text-dark text-body">©Sportsee</span>
         <span className="text-dark text-body">Tous droits réservés</span>
